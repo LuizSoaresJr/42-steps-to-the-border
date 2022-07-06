@@ -1,5 +1,6 @@
 #include<unistd.h>
 
+void ft_putchar(char c);
 void ft_print_comb(void);
 
 int	main(void)
@@ -7,37 +8,33 @@ int	main(void)
 	ft_print_comb();
 }
 
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 void ft_print_comb(void)
 {
-	char i;
-	char j;
-	char k;
-	char l;
+	int i = 0;
+	int j = 0;
 
-	i = '0';
-	while(i <= '9')
+	while(i <= 98)
 	{
-		j = '0';
-		while(j <= '9')
+		j = i + 1;
+		while(j <= 99)
 		{
-			k = '0';
-			while(k <= '9')
+			ft_putchar(i / 10 + '0');
+			ft_putchar(i % 10 + '0');
+			ft_putchar(' ');
+			ft_putchar(j / 10 + '0');
+			ft_putchar(j % 10 + '0');
+			if(i != 98 || j != 99)
 			{
-				l = '0';
-				while(l <= '9')
-				{
-					write(1, &i, 1);
-					write(1, &j, 1);
-					write(1, " ", 1);
-					write(1, &k, 1);
-					write(1, &l, 1);
-					write(1, ",", 1);
-					l++;
-				}
-			k++;
+				write(1, ", ", 2);
 			}
-		j++;
+			j++;
 		}
-	i++;	
+		i++;
 	}
+	ft_putchar('\n');
+
 }
