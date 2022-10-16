@@ -1,0 +1,27 @@
+
+32-bit processor
+	Standard processor until early 90's.
+	Windows 95, 98, XP, Vista, 7, 8 and Linux.
+	Operating systems and softwares work  with data that are 32bits long.
+	Suport 4GB of RAM.
+
+64-bit processor
+	64-bit processor have been in supercomputers since the 70's.
+	Started appearing in home computer in the ealry 00's.
+	1st AMD64-based processor was released in April 2003.
+	Windows XP, Vista, 7, 8, 10; Linux and Mac OS X.
+	Suport 16EB of RAM.
+	Both 32-bit and 64-bit programs work in a 64-bit processor.
+	Can run both types of OS 32-bit ans 64-bit.
+
+
+Differences between
+	64-bit processor comes in dual-core, quad-core, six-core and eight-core.
+	Multiple cores increase the number of calculations per second.
+	Softwares  that require many colculations function effciciently  on multi-core processors.
+	High amounts of RAM  are necessary for graphic design, engineering and video editing programs, because they need to pergorm many calculations to render images.
+	Games made for 32-bit processor do not benefit for the extra bits from the 64-bit processor
+
+References:
+	https://www.computerhope.com/issues/ch001498.htm
+	https://www.guru99.com/32-bit-vs-64-bit-operating-systems.html 

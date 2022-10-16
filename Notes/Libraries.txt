@@ -1,0 +1,6 @@
+Libraries in Unix
+
+1 Static libraries
+
+	.a extension
+	

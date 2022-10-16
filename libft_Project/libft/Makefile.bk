@@ -1,0 +1,39 @@
+CC	:= gcc
+CFLAGS 	:= -Wall -Wextra -Werror -c
+OBJ	:= ft_isalpha.o ft_isdigit.o ft_substr.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o
+
+all: libft.a clean
+
+libft.a: $(OBJ) 
+	ar -crs libft.a $(OBJ)
+ 
+#C-type functions
+ft_isalpha.o: ft_isalpha.c
+	$(CC) $(CFLAGS)  ft_isalpha.c
+
+ft_isdigit.o: ft_isdigit.c
+	$(CC) $(CFLAGS)  ft_isdigit.c
+
+ft_isalnum.o: ft_isalnum.c
+	$(CC) $(CFLAGS)  ft_isalnum.c
+
+ft_isascii.o: ft_isascii.c
+	$(CC) $(CFLAGS)  ft_isascii.c
+
+ft_isprint.o: ft_isprint.c
+	$(CC) $(CFLAGS)  ft_isprint.c
+
+ft_toupper.o: ft_toupper.c
+	$(CC) $(CFLAGS) ft_toupper.c
+
+ft_tolower.o: ft_tolower.c
+	$(CC) $(CFLAGS) ft_tolower.c
+
+#Str manipulation functions
+ft_substr.o: ft_substr.c
+	$(CC) $(CFLAGS)  ft_substr.c
+
+#Remove the object files after the creation of libft.a
+clean: 
+	rm -f $(OBJ) 
+

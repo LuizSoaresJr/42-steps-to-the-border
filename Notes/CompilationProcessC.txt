@@ -1,0 +1,34 @@
+Compilation process in C language
+
+1 Pre-processing
+
+	Uses pre-processing program
+
+	1.1 remove comments			//comment
+	1.2 macros expansion			#define VAR 13
+		the macros are substituted by assembly code
+	1.4 file inclusion			#include<something.h>
+		the entire <filename.h> is included in the source code
+	1.3 process conditional compilation	#ifndef ...
+		run or avoid a block of code after checking if macro exists
+	
+	Return a intermediate file .i with
+	no # included				something.i
+
+2 Compiling
+
+	Uses compiling software to covert .i to Assembly file .s
+	The whole code is parsed, checking for syntax error and warnings
+
+3 Assembiling
+
+	Use Assembler program
+	Converts .s file to object file .o (binary/hexadecimal)
+
+4 Linking
+
+	Include library files .a or .so into program
+	Generate an executable file .out
+
+Source: https://www.scaler.com/topics/c/compilation-process-in-c/
+	
