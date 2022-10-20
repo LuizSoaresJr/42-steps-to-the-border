@@ -2,7 +2,7 @@ CC	:= gcc
 CFLAGS 	:= -Wall -Wextra -Werror -c
 OBJ	:= $(patsubst %.c, %.o,$(wildcard *.c))
 
-all: libft.a
+all: libft.a clean
 
 libft.a: $(OBJ) | libft.h 
 	ar -crs libft.a *.o

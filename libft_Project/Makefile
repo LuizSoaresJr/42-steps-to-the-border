@@ -1,7 +1,9 @@
 CC	:= gcc
 FLAGS 	:= -Wall -Wextra -Werror
 
-.PHONY: libft libftest
+.PHONY: libft libftest all
+
+all: libft libftest main
 
 libft:
 	cd libft && $(MAKE)

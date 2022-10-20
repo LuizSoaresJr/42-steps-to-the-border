@@ -11,5 +11,7 @@ int	ft_isprint(int c);
 int	ft_toupper(int c);
 int 	ft_tolower(int c);
 
+void	*ft_memset(void *s, int c, size_t n);
+
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 #endif
