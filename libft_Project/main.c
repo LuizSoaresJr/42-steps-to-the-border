@@ -8,11 +8,11 @@
 
 #define N 10
 
-void fuu(void);
+void fei(int n);
 
 int main()
 {
-	srand((unsigned)time(0));
+	srandom((unsigned)time(0));
 	test_ctype(N, ft_isalpha, isalpha, "isalpha");
 	test_ctype(N, ft_isdigit, isdigit, "isdigit");
 	test_ctype(N, ft_isalnum, isalnum, "isalnum");
@@ -21,7 +21,8 @@ int main()
 	test_ctype(N, ft_toupper, toupper, "toupper");
 	test_ctype(N, ft_tolower, tolower, "tolower");
 
-	fuu();
+	fei(N);
+	
 	return (0);
 
 	/*
@@ -30,41 +31,33 @@ int main()
 	*/
 }
 
-void printf_int_arr(int *arr, size_t n)
+//uses libftest and ctype : random string with printible charcters
+void random_str(char *s, size_t n)
 {
-	while (n-- != 0)
-		printf("%d\t", *arr++);
-	putchar('\n');
+		size_t i = 0;
+		while (i < (n - 1))
+			s[i++] = rand_u8bit('p');
+		s[i] = '\0';
 }
 
-void printf_float_arr(float *arr, size_t n)
+void fei(int n)
 {
-	while (n-- != 0)
-		printf("%f\t", *arr++);
-	putchar('\n');
-}
+	//char s[len];
+	int x = 0;
+	int counter = 0;
 
-void printf_char_arr(char *arr, size_t n)
-{
-	while (n-- != 0)
-		printf("%c\t", *arr++);
-	putchar('\n');
-}
-
-void fuu(void)
-{
-	int n = 3;
-	int v = 0;
-	
-	char arr_char[n];
-	char arr_char_ft[n];
-	
-	int arr_char[n];
-	int arr_char_ft[n];
-	
-	memset(arr_char, v, n * sizeof(arr_char));
-	ft_memset(arr_char_ft, v, n * sizeof(arr_char_ft));
-
-	printf_char_arr(arr_char, n);
-	printf_char_arr(arr_char_ft, n);
+	while (counter++ < n)
+	{
+		size_t len = rand_n(50, 2);	
+		char ft_s[len];
+		unsigned int c = rand_u8bit('p');
+		size_t num = rand_n(len, 2) - 1;
+		size_t i = rand_n(len - num, 0);
+		
+		random_str(ft_s, len);
+		printf("%d Str: %s Len: %lu\n", x, ft_s, strlen(ft_s));
+		ft_memset(ft_s + i, c, num * sizeof(char));
+		printf("c: %c - num: %lu - i: %lu - s: %s\n", c, num, i, ft_s);
+		x++;
+	}
 }

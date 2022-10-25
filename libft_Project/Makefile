@@ -14,4 +14,4 @@ vpath %.h libft libftest
 vpath %.a libft libftest
 
 main: main.c libft.a libftest.a | libft.h libftest.h
-	$(CC) $(FLAGS) $^ -o $@
+	$(CC) -g $(FLAGS) $^ -o $@

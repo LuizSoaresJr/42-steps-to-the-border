@@ -28,7 +28,7 @@ void test_ctype(int n, int(*p_ft)(int), int(*p_f)(int), char* f_name)
 	printf("|=:=:=:=:=:(\033[0;36m%s\033[0m):=:=:=:=:=|\n", f_name);
 	while(i < n)
 	{	
-		int c = rand_8bit();
+		int c = rand_u8bit('s');
 		int foo = p_ft(c);
 		int fei = p_f(c);
 		if(foo == fei)
