@@ -8,7 +8,8 @@
 
 #define N 10
 
-void fei(int n);
+//void fei(int n);
+void test_strlen(void);
 
 int main()
 {
@@ -21,8 +22,8 @@ int main()
 	test_ctype(N, ft_toupper, toupper, "toupper");
 	test_ctype(N, ft_tolower, tolower, "tolower");
 
-	fei(N);
-	
+	test_strlen();
+	//	fei(N);
 	return (0);
 
 	/*
@@ -60,4 +61,12 @@ void fei(int n)
 		printf("c: %c - num: %lu - i: %lu - s: %s\n", c, num, i, ft_s);
 		x++;
 	}
+}
+
+void test_strlen(void)
+{
+	short len = (short)rand_n(30, 0);
+	char str[len];
+	
+	printf("%d %s %ld\n", len, str, ft_strlen(str));
 }
