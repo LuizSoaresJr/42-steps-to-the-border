@@ -8,9 +8,9 @@
 
 #define N 10
 
-//void fei(int n);
+void fei(int n);
 void test_strlen(void);
-//void rand_n_test(unsigned short bot);
+void rand_n_test(size_t bot);
 
 int main()
 {
@@ -24,9 +24,8 @@ int main()
 	test_ctype(N, ft_tolower, tolower, "tolower");
 
 	//rand_n_test(2);
-
-	test_strlen();
-	//	fei(N);
+	//test_strlen();
+	fei(N);
 	return (0);
 
 	/*
@@ -44,25 +43,31 @@ void random_str(char *s, size_t n)
 		s[i] = '\0';
 }
 
-void fei(int n)
+void fei(int n, ...)
 {
-	//char s[len];
-	int x = 0;
-	int counter = 0;
+	int i = 0;
 
-	while (counter++ < n)
+	while (i < n)
 	{
-		size_t len = rand_n(50, 2);	
+		size_t len = rand_n(50, 3);
+
 		char ft_s[len];
-		unsigned int c = rand_u8bit('p');
-		size_t num = rand_n(len, 2) - 1;
-		size_t i = rand_n(len - num, 0);
-		
+		char s[len];
+
 		random_str(ft_s, len);
-		printf("%d Str: %s Len: %lu\n", x, ft_s, strlen(ft_s));
-		ft_memset(ft_s + i, c, num * sizeof(char));
-		printf("c: %c - num: %lu - i: %lu - s: %s\n", c, num, i, ft_s);
-		x++;
+		strncpy(s, ft_s, len);
+
+		unsigned int c = rand_u8bit('p');
+		size_t n_bytes = rand_n(len, 2) - 1;
+		size_t index_starter = rand_n(len - n_bytes, 0);
+		
+		printf("%d Str: %s Len: %lu\n", i, ft_s, strlen(ft_s));
+		printf("%d Str: %s Len: %lu\n", i, s, strlen(ft_s));
+		ft_memset(ft_s + index_starter, c, n_bytes * sizeof(char));
+		memset(s + index_starter, c, n_bytes * sizeof(char));
+		printf("c: %c - n_bytes: %lu - index_starter: %lu - s: %s\n", c, n_bytes, index_starter, ft_s);
+		printf("c: %c - n_bytes: %lu - index_starter: %lu - s: %s\n", c, n_bytes, index_starter, s);
+		i++;
 	}
 }
 
@@ -86,7 +91,7 @@ void test_strlen(void)
 		printf("ft_strlen OK\n");
 }
 
-void rand_n_test(unsigned short bot)
+void rand_n_test(size_t bot)
 {
 	unsigned short i = 0;
 	unsigned short top = 50;

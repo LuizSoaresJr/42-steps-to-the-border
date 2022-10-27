@@ -24,13 +24,8 @@ unsigned long rand_u8bit(char mode)
 }
 
 // Receives top as the max value to generate random numbers 
-unsigned long rand_n(unsigned int top, unsigned short int bot)
+size_t rand_n(size_t top, size_t bot)
 {
-	unsigned long n = random() % top;
-	do
-	{
-		n = random() % top; 
-	}
-	while (n < bot);
-	return (n);
+	size_t n = random() % top;
+	return ((n < bot) ? n + bot :  n);
 }
