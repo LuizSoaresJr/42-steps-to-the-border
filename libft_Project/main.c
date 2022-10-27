@@ -10,6 +10,7 @@
 
 //void fei(int n);
 void test_strlen(void);
+//void rand_n_test(unsigned short bot);
 
 int main()
 {
@@ -21,6 +22,8 @@ int main()
 	test_ctype(N, ft_isprint, isprint, "isprint");
 	test_ctype(N, ft_toupper, toupper, "toupper");
 	test_ctype(N, ft_tolower, tolower, "tolower");
+
+	//rand_n_test(2);
 
 	test_strlen();
 	//	fei(N);
@@ -65,8 +68,32 @@ void fei(int n)
 
 void test_strlen(void)
 {
-	short len = (short)rand_n(30, 0);
-	char str[len];
-	
-	printf("%d %s %ld\n", len, str, ft_strlen(str));
+	size_t i = 0;
+	size_t j = 0;
+	while (i < 20)
+	{
+		short len = (short)rand_n(30, 2);
+		char str[len];
+		random_str(str, len);
+		if ((len =! (short)(ft_strlen(str) + 1)))
+		{
+			printf("%d %s %ld KO!\n", len, str, ft_strlen(str));
+			j++;
+		}
+		i++;
+	}
+	if (!j)
+		printf("ft_strlen OK\n");
+}
+
+void rand_n_test(unsigned short bot)
+{
+	unsigned short i = 0;
+	unsigned short top = 50;
+	while (i < top)
+	{
+		printf("%2lu, ",  rand_n(top, bot));
+		i++;
+	}
+	putchar('\n');
 }
