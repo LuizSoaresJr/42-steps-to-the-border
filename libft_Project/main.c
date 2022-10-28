@@ -1,3 +1,4 @@
+#include<stdarg.h>
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
@@ -8,7 +9,7 @@
 
 #define N 10
 
-void fei(int n);
+void fei(int n, ...);
 void test_strlen(void);
 void rand_n_test(size_t bot);
 
@@ -25,7 +26,7 @@ int main()
 
 	//rand_n_test(2);
 	//test_strlen();
-	fei(N);
+	fei(N, ft_memset);
 	return (0);
 
 	/*
@@ -45,7 +46,10 @@ void random_str(char *s, size_t n)
 
 void fei(int n, ...)
 {
+	va_list args;
 	int i = 0;
+
+	va_start(args, n);
 
 	while (i < n)
 	{
@@ -56,8 +60,8 @@ void fei(int n, ...)
 
 		random_str(ft_s, len);
 		strncpy(s, ft_s, len);
-
-		unsigned int c = rand_u8bit('p');
+		if (va_arg(args, void *(*()p_ft)(void*)(int)(size_t)))
+			unsigned int c = rand_u8bit('p');
 		size_t n_bytes = rand_n(len, 2) - 1;
 		size_t index_starter = rand_n(len - n_bytes, 0);
 		
