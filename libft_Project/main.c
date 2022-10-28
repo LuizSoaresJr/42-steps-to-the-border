@@ -9,9 +9,10 @@
 
 #define N 10
 
-void fei(int n, ...);
+//void fei(int n, ...);
 void test_strlen(void);
 void rand_n_test(size_t bot);
+void memmove_tester(void);
 
 int main()
 {
@@ -24,9 +25,11 @@ int main()
 	test_ctype(N, ft_toupper, toupper, "toupper");
 	test_ctype(N, ft_tolower, tolower, "tolower");
 
-	//rand_n_test(2);
+	//rand_n_test(3);
 	//test_strlen();
-	fei(N, ft_memset);
+	//fei(N, ft_memset);
+	memmove_tester();
+		
 	return (0);
 
 	/*
@@ -44,7 +47,7 @@ void random_str(char *s, size_t n)
 		s[i] = '\0';
 }
 
-void fei(int n, ...)
+/*void fei(int n, ...)
 {
 	va_list args;
 	int i = 0;
@@ -73,7 +76,8 @@ void fei(int n, ...)
 		printf("c: %c - n_bytes: %lu - index_starter: %lu - s: %s\n", c, n_bytes, index_starter, s);
 		i++;
 	}
-}
+}*/
+
 
 void test_strlen(void)
 {
@@ -98,7 +102,7 @@ void test_strlen(void)
 void rand_n_test(size_t bot)
 {
 	unsigned short i = 0;
-	unsigned short top = 50;
+	unsigned short top = 40;
 	while (i < top)
 	{
 		printf("%2lu, ",  rand_n(top, bot));
@@ -106,3 +110,41 @@ void rand_n_test(size_t bot)
 	}
 	putchar('\n');
 }
+
+void print_i_hex(size_t len)
+{
+	size_t i = 0;
+	while (len-- != 0)
+		printf("%.2lx,", i++);
+	printf("\b\n");
+}
+
+void print_str_1bit_spaces(char *str)
+{
+	char *ptr = str;
+	while(*ptr++)
+		printf(" %c ", *ptr);
+	putchar('\n');
+}
+
+void memmove_tester(void)
+{
+	int n = 10;
+	while(n-- != 0)
+	{
+		size_t len = rand_n(20, 3);
+		char str[len];
+		random_str(str, len);
+		size_t i_src = rand_n(len, 1);
+		size_t i_dest = rand_n(len, 1);
+		size_t n_bytes = rand_n(len, 1); 
+		
+		printf("len: %lu - i_src: %.2lx - i_dest: %.2lx - n_bytes: %lu\n", len, i_src, i_dest, n_bytes);
+		print_str_1bit_spaces(str);
+		print_i_hex(len - 1);
+		memmove(i_dest + str, i_src + str, n_bytes);
+		print_str_1bit_spaces(str);
+		putchar('\n');
+	}
+}
+
