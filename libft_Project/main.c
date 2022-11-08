@@ -9,8 +9,10 @@
 #include"libftest/libftest.h"
 
 #define N 10
+#define WORD 45
 
-void fei(void);
+char *random_sentence(size_t n, char* buffer);
+void mesure(size_t n);
 
 int main()
 {
@@ -24,9 +26,25 @@ int main()
 	test_ctype(N, ft_tolower, tolower, "tolower");
 
 //	memmove_tester();
-	fei();		
-	return (0);
+	
+	char buffer[3 * WORD];
+	random_sentence(3, buffer);
+	char buffer_ft[strlen(buffer) + 1];
 
+	printf("%s", buffer);
+	memmove(buffer + 10, buffer + 5, 10);
+	mesure(strlen(buffer) + 1);
+	printf("%s", buffer);
+
+	printf("%s", buffer_ft);
+	ft_memmove(buffer_ft + 10, buffer_ft + 5, 10);
+	mesure(strlen(buffer_ft) + 1);
+	printf("%s", buffer_ft);
+
+
+	
+
+	return (0);
 }
 
 //uses libftest and ctype : random string with printible charcters
@@ -38,43 +56,56 @@ void random_str(char *s, size_t n)
 		s[i] = '\0';
 }
 
-char *fuu(char *buffer)
+//return an pointer to the end of a random word at \0 from the dictionary
+char *random_dic_word(char *buffer)
 {
-	//Open dictionary of words
+	//Open dictionary
 	char *path = "/usr/share/dict/words";
 	FILE *word_stream = fopen(path, "r");
 	if (!word_stream)
 		err(1, "%s", path);
 	else
 	{
-		//Get word from dictionary
+		//Get a random word from dictionary
 		char c;
 		size_t i_nl = 0;
 		size_t rand_w = rand() % 102401;
-		char *ptr_w = buffer;
 		while (fread(&c, sizeof(char), 1, word_stream) && i_nl <= rand_w)
 		{
 			if (c == '\n')
 			{
 				if (i_nl == rand_w)
-					*ptr_w = '\0';
+				{
+					*buffer = '\0';
+					break;
+				}
 				i_nl++;
 			}
 			else if (i_nl == rand_w)
-				*ptr_w++ = c;
+				*buffer++ = c;
 		}
 		return (buffer);
 	}
 }
-
-void fei(void)
+//fill a buffer with a string with n words long ending with a . and \n
+char *random_sentence(size_t n, char* buffer)
 {
-	int i = 0;
-	char word_buffer[45];
-	while (i <= 5)
+	char *ptr_buffer = buffer;
+	while (--n)
 	{
-		printf("%s ", fuu(word_buffer));
-		i++;
+		ptr_buffer = random_dic_word(ptr_buffer);
+		*ptr_buffer++ = ' ';
 	}
+	*--ptr_buffer = '.';
+	*++ptr_buffer = '\n';
+	*++ptr_buffer = '\0';
+	return (buffer);
+}
+
+void mesure(size_t n)
+{
+	size_t i = 0;
+	while(i < n)
+		printf("%ld", (i++) % 10);
 	putchar('\n');
 }
