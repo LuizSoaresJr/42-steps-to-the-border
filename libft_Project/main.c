@@ -8,7 +8,8 @@
 #include"libft/libft.h"
 #include"libftest/libftest.h"
 
-#define N 10
+#define N_TEST 10
+#define N 3
 #define WORD 45
 
 char *random_sentence(size_t n, char* buffer);
@@ -17,30 +18,48 @@ void mesure(size_t n);
 int main()
 {
 	srandom((unsigned)time(0));
-	test_ctype(N, ft_isalpha, isalpha, "isalpha");
-	test_ctype(N, ft_isdigit, isdigit, "isdigit");
-	test_ctype(N, ft_isalnum, isalnum, "isalnum");
-	test_ctype(N, ft_isascii, isascii, "isascii");
-	test_ctype(N, ft_isprint, isprint, "isprint");
-	test_ctype(N, ft_toupper, toupper, "toupper");
-	test_ctype(N, ft_tolower, tolower, "tolower");
-
-//	memmove_tester();
+	test_ctype(N_TEST, ft_isalpha, isalpha, "isalpha");
+	test_ctype(N_TEST, ft_isdigit, isdigit, "isdigit");
+	test_ctype(N_TEST, ft_isalnum, isalnum, "isalnum");
+	test_ctype(N_TEST, ft_isascii, isascii, "isascii");
+	test_ctype(N_TEST, ft_isprint, isprint, "isprint");
+	test_ctype(N_TEST, ft_toupper, toupper, "toupper");
+	test_ctype(N_TEST, ft_tolower, tolower, "tolower");
 	
-	char buffer[3 * WORD];
-	random_sentence(3, buffer);
-	char buffer_ft[strlen(buffer) + 1];
+	//Definig the buffer the size and initializing it
+	size_t size = N * WORD;
+	char buffer[size];
+	bzero(buffer, size);
 
-	printf("%s", buffer);
-	memmove(buffer + 10, buffer + 5, 10);
-	mesure(strlen(buffer) + 1);
-	printf("%s", buffer);
+	size_t i = 0;
 
-	printf("%s", buffer_ft);
-	ft_memmove(buffer_ft + 10, buffer_ft + 5, 10);
-	mesure(strlen(buffer_ft) + 1);
-	printf("%s", buffer_ft);
+	while (i < N_TEST)
+	{
+		size_t dest = rand_n(size, 1);
+		size_t src = rand_n(size, 1);
+		size_t n_len = rand_n(size, 1);
 
+		//Filling the buffer with a random string of words
+		random_sentence(N, buffer);
+
+		//Defining the test buffer and copying the buffer to it
+		char buffer_ft[size];
+		memcpy(buffer_ft, buffer, size);
+		
+		//Printing the buffer before and after memmove
+		printf("Buffer:     %s\n", buffer);
+		memmove(buffer + dest, buffer + src, n_len);
+		printf("Memmove:    %s\n", buffer);
+
+		//Printing the buffer before and after ft_memmove
+		printf("Buffer:     %s\n", buffer_ft);
+		ft_memmove(buffer_ft + dest, buffer_ft + src, n_len);
+		printf("Ft_memmove: %s\n", buffer_ft);
+
+		putchar('\n');
+
+		i++;
+	}
 
 	
 
@@ -87,7 +106,7 @@ char *random_dic_word(char *buffer)
 		return (buffer);
 	}
 }
-//fill a buffer with a string with n words long ending with a . and \n
+//fill a buffer with a string with n words long ending with a '.'
 char *random_sentence(size_t n, char* buffer)
 {
 	char *ptr_buffer = buffer;
@@ -97,7 +116,6 @@ char *random_sentence(size_t n, char* buffer)
 		*ptr_buffer++ = ' ';
 	}
 	*--ptr_buffer = '.';
-	*++ptr_buffer = '\n';
 	*++ptr_buffer = '\0';
 	return (buffer);
 }
