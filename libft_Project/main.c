@@ -12,9 +12,9 @@
 #define N 5
 #define WORD 45
 
-typedef void *(*memFunction)(void *, const void *, size_t);
+typedef void *(*MEMFUNC)(void *, const void *, size_t);
 
-void test_mem(size_t n, memFunction p_f, memFunction p_ft, char *f_name);
+void test_mem(size_t n, MEMFUNC p_f, MEMFUNC p_ft, char *f_name);
 char *random_sentence(size_t n, char* buffer);
 void mesure(size_t n);
 
@@ -97,8 +97,16 @@ void mesure(size_t n)
 		printf("%ld", (i++) % 10);
 	putchar('\n');
 }
+
+int aux(char *buffer, char* buffer_test)
+{
+	while (*buffer++ == *buffer_test++)
+		;
+	return (strlen(buffer_test));
+}
+
 //uses string.h, stdio.h.
-void test_mem(size_t n, memFunction p_f, memFunction p_ft, char *f_name)
+void test_mem(size_t n, MEMFUNC p_f, MEMFUNC p_ft, char *f_name)
 {
 	//Definig the buffer the size and initializing it
 	size_t size = N * WORD;
@@ -113,7 +121,9 @@ void test_mem(size_t n, memFunction p_f, memFunction p_ft, char *f_name)
 		random_sentence(N, buffer);
 
 		//Defining the test buffer and copying the buffer to it
+		char buffer_f[size];
 		char buffer_ft[size];
+		memcpy(buffer_f, buffer, size);
 		memcpy(buffer_ft, buffer, size);
 		
 		//Defining random values for testing
@@ -125,15 +135,20 @@ void test_mem(size_t n, memFunction p_f, memFunction p_ft, char *f_name)
 		printf("            dest:%lu src:%lu len:%lu\n", dest, src, n_len);
 		//Printing the buffer before and after p_f
 		printf("buffer:     %s\n", buffer);
-		p_f(buffer + dest, buffer + src, n_len);
+		p_f(buffer_f + dest, buffer_f + src, n_len);
 		printf("%s:     %s\n",f_name, buffer);
 
 		//Printing the buffer before and after p_ft
 		p_ft(buffer_ft + dest, buffer_ft + src, n_len);
 		printf("ft_%s:  %s\n", f_name, buffer_ft);
 	
+		//To verify the diference between both test buffers
+		int aux_len_f = aux(buffer, buffer_f);
+		int aux_len_ft = aux(buffer, buffer_ft);
+		printf("len_f:%d  len_ft:%d\n", aux_len_f, aux_len_ft);
+
 		//Verify if both buffers have the same value and prints
-		if (memcmp(buffer, buffer_ft, size))
+		if (memcmp(buffer_f, buffer_ft, size))
 			printf("KO\n");
 		else
 			printf("OK\n");
@@ -143,3 +158,4 @@ void test_mem(size_t n, memFunction p_f, memFunction p_ft, char *f_name)
 	}
 
 }
+
