@@ -6,12 +6,11 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:52:48 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/21 16:29:13 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:47:28 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-#include<string.h>
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -30,17 +29,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 			*ptr++ = *src++;
 		*ptr = '\0';
 	}
-	//count with null or not??
-	return ();
-}
-
-#include<stdio.h>
-
-int main(void)
-{
-	char *str = "Luiz Soares";
-	char strC[15];
-
-	size_t out = ft_strlcpy(strC, str, 3);
-	printf("%s - %lu\n", strC, out);
+	return (0);
 }

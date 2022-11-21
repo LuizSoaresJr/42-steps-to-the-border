@@ -1,17 +1,30 @@
-CC	:= gcc
-CFLAGS 	:= -Wall -Wextra -Werror -c
-OBJ	:= $(patsubst %.c, %.o,$(wildcard *.c))
+NAME = libft.a
+AR = ar -crs
+CC	= gcc
+CFLAGS = -Wall -Wextra -Werror
+INC = libft
+#SRC = ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_strlen ft_memset ft_bzero \
+ft_memcpy ft_strlcpy ft_strlcat ft_toupper ft_tolower ft_strchr ft_strrchr ft_strnchr ft_strncmp ft_substr
+SRC = ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint ft_strlen ft_memset ft_bzero \
+ft_memcpy ft_strlcpy ft_strlcat ft_toupper ft_tolower ft_strchr ft_strrchr ft_strncmp ft_substr
+OBJ	= $(SRC:=.o)
+SRC_BONUS = ft_memmove
+OBJ_BONUS = $(SRC_BONUS:=.o)
 
-all: libft.a
+all: $(NAME)
 
-libft.a: $(OBJ) | libft.h 
-	ar -crs libft.a *.o
-%.o: %.c
-	$(CC) $(CFLAGS) $^
+$(NAME): $(OBJ) | $(INC:=.h) 
+	$(AR) $(NAME) $(OBJ)
 
-#Remove the object files after the creation of libft.a
+clean:
+	rm -f $(OBJ) $(OBJ_BONUS)
 
-.PHONY : clean
+fclean: clean
+	rm -f $(NAME)
 
-clean: 
-	rm -f *.o 
+re: fclean all
+
+bonus: $(OBJ_BONUS) | $(INC:=.h)
+	$(AR) $(NAME) $(OBJ_BONUS)
+
+.PHONY : all clean fclean re bonus

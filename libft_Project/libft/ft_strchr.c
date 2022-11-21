@@ -6,19 +6,19 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:04:06 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/21 15:30:20 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/11/21 18:17:05 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*ptr;
+	const char	*ptr;
 
 	ptr = s;
 	while (*ptr && *ptr != c)
-		*ptr++;
+		ptr++;
 	if (*ptr == c)
-		return (ptr);
+		return ((char *)ptr);
 	else
 		return (0);
 }
