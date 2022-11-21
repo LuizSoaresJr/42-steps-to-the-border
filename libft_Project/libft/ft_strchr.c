@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 16:49:41 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/17 15:50:41 by lsoares-         ###   ########.fr       */
+/*   Created: 2022/11/21 15:04:06 by lsoares-          #+#    #+#             */
+/*   Updated: 2022/11/21 15:30:20 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdlib.h>
-#include<stdio.h>
-#include<string.h>
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	*ptr;
-	size_t			i;
+	char	*ptr;
 
-	ptr = dest;
-	i = 0;
-	if (!dest || !src)
-		return (NULL);
-	while (i < n)
-		ptr[i++] = *(unsigned char *)src++;
-	return (ptr);
+	ptr = s;
+	while (*ptr && *ptr != c)
+		*ptr++;
+	if (*ptr == c)
+		return (ptr);
+	else
+		return (0);
 }

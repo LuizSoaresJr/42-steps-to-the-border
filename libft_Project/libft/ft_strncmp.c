@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 16:49:41 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/17 15:50:41 by lsoares-         ###   ########.fr       */
+/*   Created: 2022/11/21 16:00:33 by lsoares-          #+#    #+#             */
+/*   Updated: 2022/11/21 16:23:06 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdlib.h>
-#include<stdio.h>
-#include<string.h>
+#include"libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*ptr;
-	size_t			i;
+	size_t	i;
 
-	ptr = dest;
 	i = 0;
-	if (!dest || !src)
-		return (NULL);
-	while (i < n)
-		ptr[i++] = *(unsigned char *)src++;
-	return (ptr);
+	while (i < n && s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }
+
+#include<stdio.h>
+
+int main(void)
+{
+	char *str_1 = "Luiz Soares";
+	char *str_2	= "Luiz Soares";
+
+	printf("%d\n", ft_strncmp(str_1, str_2, 5));
+}
+
