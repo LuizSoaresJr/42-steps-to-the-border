@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 17:44:01 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/23 18:52:26 by lsoares-         ###   ########.fr       */
+/*   Created: 2022/11/23 18:53:54 by lsoares-          #+#    #+#             */
+/*   Updated: 2022/11/23 18:56:33 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*ptr;
-	size_t	len_s1;
-	size_t	len_s2;
-
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	ptr = malloc(len_s1 + len_s2 + 1);
-	if (!ptr)
-		return (NULL);
-	ft_strlcpy(ptr, (char *)s1, len_s1 + 1);
-	ft_strlcat(ptr, (char *)s2, len_s1 + len_s2 + 1);
-	return (ptr);
+		
 }

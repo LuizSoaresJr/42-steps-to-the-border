@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:35:33 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/22 17:05:36 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:56:56 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	char		*ptr_little;
 	size_t		i;
 	size_t		j;
-
 
 	ptr_big = (char *)big;
 	ptr_little = (char *)little;
