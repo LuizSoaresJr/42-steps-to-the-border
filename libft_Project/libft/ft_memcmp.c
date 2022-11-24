@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:23:00 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/22 14:32:44 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:18:07 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 
 	ptr_s1 = (unsigned char *)s1;
 	ptr_s2 = (unsigned char *)s2;
-
 	while (n--)
 	{
 		if (*ptr_s1 != *ptr_s2)
