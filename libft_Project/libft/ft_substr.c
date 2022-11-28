@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:22:12 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/24 18:58:30 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:00:08 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,25 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*ss;
-	int		i;
+	unsigned int	real_len;
+	char		*ptr;
 
-	ss = malloc(len * sizeof(char));
-	ss[len - 1] = '\0';
-	i = 0;
-	while (s[start] && --len)
-		ss[i++] = s[start++];
-	return (ss);
+	real_len = ft_strlen(s) - start;
+	if (len > real_len)
+		ptr = malloc(real_len + 1);
+	else
+		ptr = malloc(len + 1);
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, s + start, len + 1);
+	return (ptr);
 }
+
+/*
+int main (void)
+{
+	char *s = "Eu sou inteligente.";
+	char *resut = ft_substr(s, 7, 0);
+	printf("%s\n", resut);
+}
+*/
