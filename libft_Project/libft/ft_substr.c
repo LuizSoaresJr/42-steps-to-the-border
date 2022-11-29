@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:22:12 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/29 13:20:39 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:01:36 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char		*ptr;
+	size_t	s_len;
+	char	*ptr;
 
-	if (len == 1 || start > ft_strlen(s))
+	s_len = ft_strlen(s);
+	if (len == 0 || start >= s_len || *s == '\0')
 	{
 		ptr = malloc(1);
 		if (!ptr)
 			return (NULL);
-		ft_bzero(ptr, 1);
+		*ptr = '\0';
+		return (ptr);
 	}
-	else
-	{
-		ptr = malloc(len + 1);
-		if (!ptr)
-			return (NULL);
-		ft_strlcpy(ptr, s + start, len + 1);
-	}
+	else if (len >= s_len)
+		len = (s_len - start);
+	ptr = malloc(len + 1);
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, s + start, len + 1);
 	return (ptr);
-}
-/*
-int main (void)
-{
-	char *s = "Eu sou inteligente.";
-	char *resut = ft_substr("", 0, 0);
-	printf("%s\n", resut);
-}
-*/
-
-//len = 1 return "";
-//		malloc(1);
-// start > sizeof(len) return "";
-//		malloc(1);
