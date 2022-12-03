@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:22:12 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/29 16:01:36 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/03 15:01:18 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,4 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	ft_strlcpy(ptr, s + start, len + 1);
 	return (ptr);
+}

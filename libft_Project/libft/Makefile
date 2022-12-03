@@ -10,7 +10,7 @@ SRC = ft_isalpha ft_isdigit ft_isalnum ft_isascii \
 	  ft_strlcpy ft_strlcat ft_toupper ft_tolower \
 	  ft_strchr ft_strrchr ft_strncmp ft_strnstr \
 	  ft_substr ft_memchr ft_memcmp ft_atoi ft_calloc \
-	  ft_strdup ft_strjoin #ft_strtrim
+	  ft_strdup ft_strjoin ft_strtrim
 
 OBJ	= $(SRC:=.o)
 SRC_BONUS = ft_memmove
