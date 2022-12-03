@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 18:53:54 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/29 18:52:22 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/02 14:07:34 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
+	char *ptr = (char *)s1;
+	int counter = 1;
+	while ((ptr = ft_strchr(set, *ptr)) && *ptr)
+		printf("Entered in the while loop %d times, set value:%c\nptr value:%s\n--------end------\n\n", counter++, *ptr++, ptr);
+	return (ptr);
+}
 
-	i = 0;
-	j = ft_strlen(s1);
-	while ()
+int main(void)
+{
+	char *str = "this is to be cut this not, cut this is to be";
+	printf("what returned from strtrim:\n%s\n", ft_strtrim(str, "cut"));
 }
