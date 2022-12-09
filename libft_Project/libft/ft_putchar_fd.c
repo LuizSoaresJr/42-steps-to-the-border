@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 16:47:29 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/05 11:27:07 by lsoares-         ###   ########.fr       */
+/*   Created: 2022/12/08 00:41:34 by lsoares-          #+#    #+#             */
+/*   Updated: 2022/12/08 00:45:46 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
-{	
-	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
+#include"libft.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
 }
