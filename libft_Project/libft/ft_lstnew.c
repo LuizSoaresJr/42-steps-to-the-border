@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 23:13:45 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/10 17:08:00 by lsoares-         ###   ########.fr       */
+/*   Created: 2022/12/10 18:24:03 by lsoares-          #+#    #+#             */
+/*   Updated: 2022/12/12 22:46:23 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstnew(void *content)
 {
-	unsigned int	i;
-	size_t		s_len;
-	char		*ptr;
+	t_list	*node;
 
-	s_len = ft_strlen(s);
-	ptr = malloc((s_len + 1) * sizeof(char));
-	if (!ptr)
+	node = malloc(sizeof(t_list));
+	if (!node)
 		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		ptr[i] = f(i, s[i]);
-		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+	node -> content = (void *)content;
+	node -> next = NULL;
+	return (node);
 }
+
+/*
+int	main(void)
+{
+	int n = 1001;
+	t_list *list;
+	list = ft_lstnew(&n);
+	printf("%d\n", *(int *)list -> content);
+}
+*/

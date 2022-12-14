@@ -12,10 +12,10 @@ SRC = ft_isalpha ft_isdigit ft_isalnum ft_isascii \
 	  ft_substr ft_memchr ft_memcmp ft_atoi ft_calloc \
 	  ft_strdup ft_strjoin ft_strtrim ft_split ft_strmapi \
 	  ft_striteri ft_putchar_fd ft_putstr_fd ft_putendl_fd \
-	  ft_itoa
+	  ft_itoa ft_putnbr_fd 
 
 OBJ	= $(SRC:=.o)
-SRC_BONUS = ft_memmove
+SRC_BONUS = ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone ft_lstclear
 OBJ_BONUS = $(SRC_BONUS:=.o)
 
 all: $(NAME)

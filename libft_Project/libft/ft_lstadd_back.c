@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 23:13:45 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/10 17:08:00 by lsoares-         ###   ########.fr       */
+/*   Created: 2022/12/12 23:02:27 by lsoares-          #+#    #+#             */
+/*   Updated: 2022/12/12 23:19:40 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	unsigned int	i;
-	size_t		s_len;
-	char		*ptr;
+	t_list *last;
 
-	s_len = ft_strlen(s);
-	ptr = malloc((s_len + 1) * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	if(!lst || !new)
+		return ;
+	last = ft_lstlast(*lst);
+	if(!*lst)
 	{
-		ptr[i] = f(i, s[i]);
-		i++;
+		*lst = new;
+		return ;
 	}
-	ptr[i] = '\0';
-	return (ptr);
+	last->next = new;
 }
