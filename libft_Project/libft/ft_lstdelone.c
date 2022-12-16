@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 09:51:13 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/13 19:07:03 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:24:10 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if(!lst)
+	if (!lst)
 		return ;
 	del(lst->content);
 	free(lst);

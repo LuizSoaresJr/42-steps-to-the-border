@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:10:27 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/12 22:28:14 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:23:25 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (lst)
@@ -22,5 +22,5 @@ int	ft_lstsize(t_list *lst)
 		i++;
 		lst = lst->next;
 	}
-	return(i);
+	return (i);
 }

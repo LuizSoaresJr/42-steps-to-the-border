@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:02:27 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/12 23:19:40 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:22:47 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *last;
+	t_list	*last;
 
-	if(!lst || !new)
+	if (!lst || !new)
 		return ;
 	last = ft_lstlast(*lst);
-	if(!*lst)
+	if (!*lst)
 	{
 		*lst = new;
 		return ;

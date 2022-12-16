@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 16:53:36 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/05 14:51:43 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:27:20 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,19 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	while (i < wc)
 	{
-		if (*ptr !=  c)
+		if (*ptr != c)
 			result[i++] = ft_substr(ptr, 0, split_len(ptr, c));
 		ptr = ft_strchr(ptr, c) + 1;
 	}
 	result[i] = NULL;
 	return (result);
 }
+
 /*
 int main(void)
 {
-	char *str = "   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ";
-	char **ptr = ft_split(str, ' ');
+	char *str = "";
+	char **ptr = ft_split(str, '');
 	size_t i = 0;
 	while (ptr[i])
 	{

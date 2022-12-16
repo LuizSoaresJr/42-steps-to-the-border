@@ -15,7 +15,7 @@ SRC = ft_isalpha ft_isdigit ft_isalnum ft_isascii \
 	  ft_itoa ft_putnbr_fd 
 
 OBJ	= $(SRC:=.o)
-SRC_BONUS = ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone ft_lstclear
+SRC_BONUS = ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone ft_lstclear ft_lstiter
 OBJ_BONUS = $(SRC_BONUS:=.o)
 
 all: $(NAME)
