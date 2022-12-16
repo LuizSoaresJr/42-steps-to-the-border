@@ -6,23 +6,21 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:04:06 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/21 18:47:52 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/16 14:32:11 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strrchr(const char *s, int c)
 {
 	int			term;
-	const char	*ptr;
 
-	ptr = s;
-	term = *ptr;
-	while (*ptr++)
+	term = *s;
+	while (*s++)
 		;
-	while (*ptr != term && *ptr != c)
-		ptr--;
-	if (*ptr == c)
-		return ((char *)ptr);
+	while (*s != term && *s != c)
+		s--;
+	if (*s == c)
+		return (char *)(s);
 	else
 		return (0);
 }

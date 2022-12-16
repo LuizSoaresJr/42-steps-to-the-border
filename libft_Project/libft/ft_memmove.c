@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:57:26 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/21 18:49:02 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/16 14:13:12 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	ptr_d = dest;
 	ptr_s = src;
-	if (!dest || !src)
-		return (NULL);
 	if (ptr_s < ptr_d)
 		while (n--)
 			ptr_d[n] = ptr_s[n];

@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:49:41 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/11/21 18:12:15 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/16 14:14:27 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	ptr = dest;
 	i = 0;
-	if (!dest || !src)
-		return (NULL);
 	while (i < n)
 		ptr[i++] = *(unsigned char *)src++;
 	return (ptr);
