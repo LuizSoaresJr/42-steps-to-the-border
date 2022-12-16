@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:04:06 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/16 14:32:11 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:46:42 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (*s != term && *s != c)
 		s--;
 	if (*s == c)
-		return (char *)(s);
+		return ((char *)s);
 	else
 		return (0);
 }
