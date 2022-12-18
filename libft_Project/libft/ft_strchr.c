@@ -6,27 +6,31 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 15:04:06 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/16 19:22:26 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:52:50 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include<string.h>
 
 char	*ft_strchr(const char *s, int c)
 {
-	const char	*ptr;
-
-	ptr = s;
-	while (*ptr && *ptr != c)
-		ptr++;
-	if (*ptr == c)
-		return ((char *)ptr);
-	else
-		return (0);
+	if (c > 256)
+		c %= 256;
+	while (*s && *s != c)
+		s++;
+	if (*s == c)
+		return ((char *)s);
+	return (0);
 }
 
-int main(void)
+/*
+int	main(void)
 {
 	char *str = "teste";
-	printf("%ld\n", (ft_strchr(str, 'e' + 256) - str));
+	char *res;
+	char *res_ft;
+	res = strchr(str, 't' + 256);
+	res_ft = ft_strchr(str, 't' + 256);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:57:26 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/16 14:13:12 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/18 15:11:23 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char		*ptr_d;
 	const unsigned char	*ptr_s;
 
+	if (dest == src || n == 0)
+		return (dest);
 	ptr_d = dest;
 	ptr_s = src;
 	if (ptr_s < ptr_d)
