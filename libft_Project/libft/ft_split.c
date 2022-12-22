@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 16:53:36 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/16 13:27:20 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/20 00:46:34 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ static size_t	split_len(char const *s, char c)
 	return (i);
 }
 
+static void	split_protec(char **arr)
+{
+	size_t	i;	
+
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
@@ -46,15 +56,21 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	wc = word_c(s, c);
-	ptr = (char *)s;
 	result = malloc((wc + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	while (i < wc)
 	{
 		if (*ptr != c)
-			result[i++] = ft_substr(ptr, 0, split_len(ptr, c));
-		ptr = ft_strchr(ptr, c) + 1;
+		{
+			result[i] = ft_substr(s, 0, split_len(s, c));
+			if (!result[i++])
+			{
+				split_protec(result);
+				return (NULL);
+			}
+		}
+		ptr = ft_strchr(s, c) + 1;
 	}
 	result[i] = NULL;
 	return (result);

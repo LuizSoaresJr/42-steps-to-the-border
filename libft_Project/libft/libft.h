@@ -6,7 +6,7 @@
 /*   By: lsoares- <lsoares-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 17:26:35 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/16 17:23:22 by lsoares-         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:56:24 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
