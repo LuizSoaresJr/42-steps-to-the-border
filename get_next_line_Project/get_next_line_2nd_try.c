@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/21 12:41:36 by lsoares-          #+#    #+#             */
-/*   Updated: 2023/01/03 20:46:01 by lsoares-         ###   ########.fr       */
+/*   Created: 2023/01/03 21:21:10 by lsoares-          #+#    #+#             */
+/*   Updated: 2023/01/04 20:26:26 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <unistd.h>
-# include <stdlib.h>
+#include"get_next_line.h"
 
-char	*get_next_line(int fd);
-void	*ft_calloc(size_t nmemb, size_t n);
-void	ft_bzero(void *s, size_t n);
-void	*ft_memset(void *s, int c, size_t n);
-#endif
+char	*get_next_line(int fd)
+{
+	static char	*buffer;
+	size_t		size;
+	
+	size = BUFFER_SIZE;
+	if(fd == -1 || !size)
+		return (NULL);
+	buffer = ft_calloc(sizeof(char), size + 1);
+	if (!buffer)
+		return (NULL);
+	while (read(fd, buffer, size))
+		if (*buffer)
+			return (buffer);
+	return (NULL);
+}
