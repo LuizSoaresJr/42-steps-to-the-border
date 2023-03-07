@@ -6,34 +6,52 @@
 /*   By: lsoares- <lsoares-@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 13:31:09 by lsoares-          #+#    #+#             */
-/*   Updated: 2022/12/21 13:43:12 by lsoares-         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:23:30 by lsoares-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"get_next_line.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+//Iterate the string, return 1 if it finds a \n 0 if not
+char	*str_nl(char *str)
 {
-	void	*ptr;
+	if (!str)
+		return (0);
+	while (*str++)
+		if (*str == '\n')
+			return (str);
+	return (NULL);
+}
 
-	ptr = malloc(nmemb * size);
-	if (!ptr)
+//Return the size of the string
+size_t	ft_strlen(char *str)
+{
+	size_t	len;
+
+	len = 0;
+	if (!str)
+		return (0);
+	while (*str++)
+		len++;
+	return (len);
+}
+
+//Allocate new memory and copy the string in to it
+char	*ft_strdup(char *str)
+{
+	char	*dup;
+	char	*tmp;
+
+	if (!str)
 		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, '\0', n);
-}
-
-void	*ft_memset(void *s, int c, size_t n)
-{
-	unsigned char	*ptr;
-
-	ptr = (unsigned char *)s;
-	while (n-- > 0)
-		*ptr++ = c;
-	return (s);
+	dup = malloc(ft_strlen(str) * sizeof(char) + 1);
+	if (!dup)
+		return (NULL);
+	tmp = dup;
+	while (*str)
+	{
+		*tmp++ = *str++;
+	}
+	*tmp = '\0';
+	return (dup);
 }
